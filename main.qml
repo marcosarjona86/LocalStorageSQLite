@@ -19,7 +19,7 @@ ApplicationWindow {
     property string dbDescription:'Database application'
 
     //tamaño estimado de la base de datos
-    property  int dbSize: 100000
+    property  int dbSize: 1000000
 
     // base de datos
     property var db
@@ -35,7 +35,7 @@ ApplicationWindow {
      StackView {
         id: stackView
         anchors.fill: parent
-        initialItem: dataForm
+        initialItem: inputForm
     }
 
     // formulario de visualizacion de datos

@@ -1,33 +1,42 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.1 // en el video va el 2.1 pero es prueba.
+import QtQuick.Controls 2.1
 import QtQml.Models 2.15 // no estaba en el video es una prueba.
+import QtQuick.LocalStorage 2.0
+import 'DataFormJS.js' as DataFormJS
 
 Item {
     anchors.fill: parent
 
+    Component.onCompleted: {
+        DataFormJS.cargaInformacion();
+
+    }
+
     ListView {
         id: personasListView
-        spacing: 2
+        spacing: 15
 
         anchors {
-            left: paren.left
+            left: parent.left
             right: parent.right
             top: parent.top
-            button: atrasButton.top
+            bottom: atrasButton.top // button
         }
 
         model: ListModel {}
 
-        delegate: Label {
+        delegate: Text {
             anchors {
                 left: parent.left
                 right: parent.right
             }
 
-            height: 50
+            font.pointSize: 20
+            horizontalAlignment: Text.AlignHCenter
 
             // variable del delegado
-            text: id + '' + nombre + '' + edad
+            text: 'ID: ' + id + '\n' + 'Nombre: ' + nombre + '\n'
+                  + 'Edad: ' + edad
         }
    }
 
@@ -39,7 +48,7 @@ Item {
         anchors {
             left: parent.left
             right: parent.right
-            button: parent.button
+            bottom: parent.bottom
         }
 
         onClicked: {
